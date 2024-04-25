@@ -6,11 +6,27 @@
 			line-height: 60px;
 			text-align: center;
 			font-size: 24px;
+			color: blue;
 		}
 		
 		#input_context {
-			height: 100px;
+			height: 200px;
 			width: 100%;
+		}
+		
+		#btn_container {
+			background-color: lightblue;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100px;
+		}
+		
+		#submit_btn {
+			width: 160px;
+			height: 40px;
+			
+			text-align: center;
 		}
 		
 		.container {
@@ -71,7 +87,7 @@
 		<script>
 			function OnSubmitClick(){
 				
-				var msg = document.getElementById("context").value;
+				var msg = document.getElementById("input_context").value;
 				
 				Alert(msg);
 			}
@@ -86,7 +102,11 @@
 		
 		<div class="input_tip">把剪切板中的团单信息复制到输入框中</div>
 		<input type="text" id="input_context"><br>
-		<button type="button" onclick="OnSubmitClick()">提交</button>
+		
+		<div id="btn_container">
+			<button type="button" id="submit_btn" onclick="OnSubmitClick()">提交</button>
+		</div>
+		
 		
 		<h1>
 			团单详情2024-04-21
