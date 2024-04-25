@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<style>
+		.input_tip {
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			font-size: 24px;
+		}
+		
+		#input_context {
+			height: 100px;
+			width: 100%;
+		}
+		
 		.container {
 			display: flex;
 		}
@@ -72,8 +84,8 @@
 	</head>
 	<body>
 		
-		<div>把剪切板中的团单信息复制到输入框中</div>
-		<input type="text" id="context"><br>
+		<div class="input_tip">把剪切板中的团单信息复制到输入框中</div>
+		<input type="text" id="input_context"><br>
 		<button type="button" onclick="OnSubmitClick()">提交</button>
 		
 		<h1>
