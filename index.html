@@ -8,32 +8,33 @@
 			font-size: 24px;
 			color: blue;
 		}
-		
+
 		#input_context {
 			height: 200px;
 			width: 100%;
 		}
-		
+
 		#btn_container {
-			background-color: lightblue;
+			/* background-color: lightblue; */
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			height: 100px;
 		}
-		
+
 		#submit_btn {
 			width: 160px;
 			height: 40px;
-			
+
 			text-align: center;
 		}
-		
+
 		.container {
 			display: flex;
 		}
 
-		.div-left, .div-right {
+		.div-left,
+		.div-right {
 			width: 50%;
 			padding: 10px;
 		}
@@ -46,12 +47,20 @@
 			background-color: lightgreen;
 		}
 		
+		
+		#detail_title {
+			background-color: lightgreen;
+			text-align: center;
+			height: 100px;
+			line-height: 100px;
+		}
+
 		.customer-sale-info {
 			/*background-color: yellow;*/
 			padding: 10px 10px 10px 10px;
 			border-bottom: 1px dashed black;
 		}
-		
+
 		.customer-name {
 			/*background-color: yellow;*/
 			font-size: 24px;
@@ -79,73 +88,92 @@
 			line-height: 30px;
 		}
 	</style>
-		
+
 	<head>
 		<meta charset="utf-8">
 		<title>团单详情2024-04-21</title>
-		
+
 		<script>
-			function OnSubmitClick(){
-				
-				var msg = document.getElementById("input_context").value;
-				
-				Alert(msg);
+			
+			var detailContainer, inputContainer;
+			var inputState = true;
+			
+			// 页面加载完成后自动执行的函数
+			window.onload = function() {
+				detailContainer = document.getElementById("detail_container");
+				detailContainer.style.display = "none";
+				inputContainer = document.getElementById("input_container");
+				inputContainer.style.display = "block";
 			}
 			
-			function Alert(msg){
-				alert(msg);
+			function OnSubmitClick() {
+				var input = document.getElementById("input_context").value;
+				HandleInput(input);
+				
+				inputState = !inputState;
+				detailContainer.style.display = inputState? "none":"block";
+				inputContainer.style.display = inputState? "block":"none";
+			}
+
+			function HandleInput(input) {
+				
 			}
 		</script>
-		
+
 	</head>
 	<body>
-		
-		<div class="input_tip">把剪切板中的团单信息复制到输入框中</div>
-		<input type="text" id="input_context"><br>
-		
-		<div id="btn_container">
-			<button type="button" id="submit_btn" onclick="OnSubmitClick()">提交</button>
-		</div>
-		
-		
-		<h1>
-			团单详情2024-04-21
-		</h1>
-		<div class="container">
-			<div class="div-left">
-				<div class="customer-sale-info">
-					<div class="customer-name">顾客：代表月亮消灭你</div>
-					<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
-					<div class="item">小鸡仔 2份 x 10元 = 20元</div>
-					<div class="total-pay">合计：39.9元</div>
-				</div>
-				<div class="customer-sale-info">
-					<div class="customer-name">顾客：辛宸</div>
-					<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
-					<div class="item">丹东L25蓝莓 1件 x 35元 = 35元</div>
-					<div class="item">益生元蓝莓汁 1箱 x 17.9元 = 17.9元</div>
-					<div class="item">樱桃大连现采摘现发沈阳 1份 x 180元 = 180元</div>
-					<div class="item">百香果 2箱 x 9.9元 = 19.8元</div>
-					<div class="item">富硒笨鸡蛋 1份 x 13元 = 13元</div>
-					<div class="total-pay">合计：285.6元</div>
-				</div>
-				<div class="customer-sale-info">
-					<div class="customer-name">顾客：李TT</div>
-					<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
-					<div class="total-pay">合计：19.9元</div>
-				</div>
-			</div>
-			<div class="div-right">
-				<div>
-					的风格和的风格和
-				</div>
-				<div>
-					的甘肃分公司
-				</div>
-				<div>
-					的甘肃分公司
-				</div>
+
+		<div id="input_container">
+			<div class="input_tip">把剪切板中的团单信息复制到输入框中</div>
+			<input type="text" id="input_context"><br>
+			
+			<div id="btn_container">
+				<button type="button" id="submit_btn" onclick="OnSubmitClick()">提交</button>
 			</div>
 		</div>
+		
+		<div id="detail_container">
+			
+			<h1 id="detail_title">团单详情2024-04-21</h1>
+			
+			<div class="container">
+				<div class="div-left">
+					<div class="customer-sale-info">
+						<div class="customer-name">顾客：代表月亮消灭你</div>
+						<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
+						<div class="item">小鸡仔 2份 x 10元 = 20元</div>
+						<div class="total-pay">合计：39.9元</div>
+					</div>
+					<div class="customer-sale-info">
+						<div class="customer-name">顾客：辛宸</div>
+						<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
+						<div class="item">丹东L25蓝莓 1件 x 35元 = 35元</div>
+						<div class="item">益生元蓝莓汁 1箱 x 17.9元 = 17.9元</div>
+						<div class="item">樱桃大连现采摘现发沈阳 1份 x 180元 = 180元</div>
+						<div class="item">百香果 2箱 x 9.9元 = 19.8元</div>
+						<div class="item">富硒笨鸡蛋 1份 x 13元 = 13元</div>
+						<div class="total-pay">合计：285.6元</div>
+					</div>
+					<div class="customer-sale-info">
+						<div class="customer-name">顾客：李TT</div>
+						<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
+						<div class="total-pay">合计：19.9元</div>
+					</div>
+				</div>
+				<div class="div-right">
+					<div>
+						的风格和的风格和
+					</div>
+					<div>
+						的甘肃分公司
+					</div>
+					<div>
+						的甘肃分公司
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
 	</body>
 </html>
