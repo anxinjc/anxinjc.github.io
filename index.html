@@ -55,8 +55,27 @@
 	<head>
 		<meta charset="utf-8">
 		<title>团单详情2024-04-21</title>
+		
+		<script>
+			function OnSubmitClick(){
+				
+				var msg = document.getElementById("context").value;
+				
+				Alert(msg);
+			}
+			
+			function Alert(msg){
+				alert(msg);
+			}
+		</script>
+		
 	</head>
 	<body>
+		
+		<div>把剪切板中的团单信息复制到输入框中</div>
+		<input type="text" id="context"><br>
+		<button type="button" onclick="OnSubmitClick()">提交</button>
+		
 		<h1>
 			团单详情2024-04-21
 		</h1>
