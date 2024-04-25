@@ -110,14 +110,70 @@
 				var input = document.getElementById("input_context").value;
 				HandleInput(input);
 				
+				
+				
 				inputState = !inputState;
 				detailContainer.style.display = inputState? "none":"block";
 				inputContainer.style.display = inputState? "block":"none";
+				
+				var saleStr = "顾客：代表月亮消灭你_串柿子 1件 x 19.9元 = 19.9元_小鸡仔 2份 x 10元 = 20元_合计：39.9元"
+				AddSale(saleStr);
+				
+				console.log(document.getElementById('sale_info_parent').offsetHeight);
 			}
 
 			function HandleInput(input) {
 				
 			}
+			
+			function AddSale(saleStr) {
+				
+				var lineArr = saleStr.split('_');
+				var length = lineArr.length;
+				
+				var parent = document.getElementById('sale_info_parent');
+				
+				console.log(parent.offsetHeight);
+				
+				var saleDiv = document.createElement('div');
+				saleDiv.classList.add('customer-sale-info');
+				
+				// 添加客户名
+				AddCustomerLine(saleDiv, lineArr[0]);
+				
+				// 添加商品列表
+				for(var i=1; i<length - 1; i++){
+					AddItemLine(saleDiv, lineArr[i]);
+				}
+				
+				// 添加支付数额
+				AddPayLine(saleDiv, lineArr[length - 1]);
+				
+				parent.appendChild(saleDiv);
+				
+				return length;
+			}
+			
+			function AddCustomerLine(parent, str){
+				AddDiv(parent, str, "customer-name");
+			}
+			
+			function AddItemLine(parent, str){
+				AddDiv(parent, str, "item");
+			}
+			
+			function AddPayLine(parent, str){
+				AddDiv(parent, str, "total-pay");
+			}
+			
+			function AddDiv(parent, innerText, classText){
+				var newDiv = document.createElement('div');
+				newDiv.innerHTML = innerText;
+				newDiv.classList.add(classText);
+				
+				parent.appendChild(newDiv);
+			}
+			
 		</script>
 
 	</head>
@@ -137,7 +193,7 @@
 			<h1 id="detail_title">团单详情2024-04-21</h1>
 			
 			<div class="container">
-				<div class="div-left">
+				<div class="div-left" id="sale_info_parent">
 					<div class="customer-sale-info">
 						<div class="customer-name">顾客：代表月亮消灭你</div>
 						<div class="item">串柿子 1件 x 19.9元 = 19.9元</div>
